@@ -26,7 +26,7 @@ export const Home = () => {
             <em className="text-amber-400 not-italic">begins here.</em>
           </h1>
           <p className="text-amber-100/60 text-lg mb-10 leading-relaxed">
-            Discover thousands of books, manage your reading journey, and explore the world of knowledge at Bibliotheca — your digital library companion.
+            Discover thousands of books, manage your reading journey, and explore the world of knowledge at Bookentra — your digital library companion.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/browse" className="btn-secondary px-8 py-3 text-base">Browse Library</Link>
@@ -92,7 +92,7 @@ export const Home = () => {
         ) : (
           <>
             <p className="text-amber-100/60 mb-8">Register for free and get instant access to our entire library collection.</p>
-            <Link to="/register" className="btn-secondary px-10 py-3 text-base">Join Bibliotheca</Link>
+            <Link to="/register" className="btn-secondary px-10 py-3 text-base">Join Bookentra</Link>
           </>
         )}
       </div>
@@ -101,8 +101,8 @@ export const Home = () => {
     {/* Footer */}
     <footer className="bg-ink-950 text-amber-100/40 py-8">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="font-display text-lg font-bold text-amber-100/60">Bibliotheca</p>
-        <p className="text-sm">© {new Date().getFullYear()} Bibliotheca Library Management System</p>
+        <p className="font-display text-lg font-bold text-amber-100/60">Bookentra</p>
+        <p className="text-sm">© {new Date().getFullYear()} Bookentra Library Management System</p>
         <div className="flex gap-6 text-sm">
           <Link to="/about" className="hover:text-amber-100 transition-colors">About</Link>
           <Link to="/contact" className="hover:text-amber-100 transition-colors">Contact</Link>

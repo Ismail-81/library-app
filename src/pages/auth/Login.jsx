@@ -5,6 +5,7 @@ import { loginUser } from '../../firebase/auth';
 import { getUserProfile } from '../../firebase/auth';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
+import Logo from '../../components/Logo';
 
 export const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -45,14 +46,7 @@ export const Login = () => {
       <div className="hidden lg:flex lg:w-1/2 bg-ink-950 flex-col justify-between p-12 relative overflow-hidden">
         <div className="absolute inset-0 bg-paper opacity-30" />
         <div className="relative z-10">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-amber-400 rounded-lg flex items-center justify-center">
-              <svg className="w-6 h-6 text-ink-900" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-            <span className="font-display text-2xl font-bold text-amber-100">Bibliotheca</span>
-          </Link>
+          <Logo className="text-amber-100" />
         </div>
         <div className="relative z-10">
           <blockquote className="font-display text-3xl font-bold text-amber-100 leading-tight mb-4">
@@ -74,14 +68,7 @@ export const Login = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-md animate-slide-up">
           <div className="lg:hidden mb-8 text-center">
-            <Link to="/" className="inline-flex items-center gap-2">
-              <div className="w-8 h-8 bg-ink-900 rounded flex items-center justify-center">
-                <svg className="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <span className="font-display text-xl font-bold text-ink-900">Bibliotheca</span>
-            </Link>
+            <Logo iconClassName="bg-ink-900" svgClassName="text-amber-400" textClassName="text-ink-900" />
           </div>
 
           <div className="mb-8">

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { logoutUser } from '../../firebase/auth';
 import toast from 'react-hot-toast';
+import Logo from '../Logo';
 
 export const Navbar = () => {
   const { user, profile } = useAuth();
@@ -21,16 +22,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 bg-amber-400 rounded flex items-center justify-center">
-              <svg className="w-5 h-5 text-ink-900" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-            <span className="font-display text-xl font-bold text-amber-100 group-hover:text-amber-300 transition-colors">
-              Bibliotheca
-            </span>
-          </Link>
+          <Logo />
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">

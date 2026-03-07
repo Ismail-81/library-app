@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { logoutUser } from '../../firebase/auth';
 import toast from 'react-hot-toast';
+import Logo from '../Logo';
 
 const AdminNav = [
   { label: 'Dashboard', path: '/admin', icon: <GridIcon /> },
@@ -52,13 +53,8 @@ export const DashboardLayout = ({ children }) => {
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 md:shadow-none flex flex-col`}>
         
         {/* Sidebar Header */}
-        <div className="px-5 py-4 border-b border-ink-100 flex items-center gap-3">
-          <div className="w-8 h-8 bg-ink-900 rounded flex items-center justify-center flex-shrink-0">
-            <svg className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <span className="font-display text-base font-bold text-ink-900">Bibliotheca</span>
+        <div className="px-5 py-4 border-b border-ink-100">
+          <Logo textClassName="text-ink-900" iconClassName="bg-ink-900" svgClassName="text-amber-400" />
           <button className="ml-auto md:hidden text-ink-400" onClick={() => setSidebarOpen(false)}>
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

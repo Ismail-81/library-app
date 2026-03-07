@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../firebase/auth';
 import toast from 'react-hot-toast';
+import Logo from '../../components/Logo';
 
 export const Register = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '', role: 'student' });
@@ -33,14 +34,12 @@ export const Register = () => {
     <div className="min-h-screen bg-ink-50 flex items-center justify-center p-8">
       <div className="w-full max-w-md animate-slide-up">
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-ink-900 rounded flex items-center justify-center">
-              <svg className="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-            <span className="font-display text-xl font-bold text-ink-900">Bibliotheca</span>
-          </Link>
+          <Logo
+            iconClassName="bg-ink-900"
+            svgClassName="text-amber-400"
+            textClassName="text-ink-900"
+            className="mb-6"
+          />
           <h1 className="font-display text-3xl font-bold text-ink-900 mb-2">Create Account</h1>
           <p className="text-ink-500 text-sm">Join the library community</p>
         </div>

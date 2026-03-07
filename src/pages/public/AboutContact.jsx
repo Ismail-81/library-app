@@ -6,21 +6,21 @@ export const About = () => (
     <Navbar />
     <div className="max-w-4xl mx-auto px-6 py-16">
       <div className="text-center mb-12">
-        <h1 className="font-display text-4xl font-bold text-ink-900 mb-4">About Bibliotheca</h1>
+        <h1 className="font-display text-4xl font-bold text-ink-900 mb-4">About Bookentra</h1>
         <p className="text-ink-500 text-lg">A modern library management system built for the digital age.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
         <div className="card p-8">
           <h2 className="font-display text-xl font-semibold text-ink-800 mb-4">Our Mission</h2>
           <p className="text-ink-600 text-sm leading-relaxed">
-            Bibliotheca was created to bridge the gap between traditional library management and modern digital expectations.
+            Bookentra was created to bridge the gap between traditional library management and modern digital expectations.
             We believe every student deserves seamless access to knowledge, and every librarian deserves powerful tools to manage collections efficiently.
           </p>
         </div>
         <div className="card p-8">
           <h2 className="font-display text-xl font-semibold text-ink-800 mb-4">Our Vision</h2>
           <p className="text-ink-600 text-sm leading-relaxed">
-            We envision a world where access to knowledge has no barriers. Bibliotheca provides a unified platform
+            We envision a world where access to knowledge has no barriers. Bookentra provides a unified platform
             where books, readers, and administrators come together in a seamless, intelligent ecosystem.
           </p>
         </div>
@@ -81,7 +81,7 @@ export const Contact = () => {
           </form>
         </div>
         <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-          {[['📧', 'Email', 'admin@bibliotheca.com'], ['📞', 'Phone', '+1 (555) 000-0000'], ['📍', 'Address', '123 Library Lane']].map(([e, l, v]) => (
+          {[['📧', 'Email', 'admin@bookentra.com'], ['📞', 'Phone', '+1 (555) 000-0000'], ['📍', 'Address', '123 Library Lane']].map(([e, l, v]) => (
             <div key={l} className="card p-4">
               <div className="text-2xl mb-2">{e}</div>
               <p className="text-xs font-semibold text-ink-700">{l}</p>

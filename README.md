@@ -1,4 +1,4 @@
-# 📚 Bibliotheca — Library Management System
+# 📚 Bookentra — Library Management System
 
 A full-stack Library Management System built with **React (Vite)**, **Tailwind CSS**, and **Firebase** (Authentication + Firestore).
 
