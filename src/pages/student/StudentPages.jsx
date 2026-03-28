@@ -75,8 +75,13 @@ export const MyIssuedBooks = () => {
                       </span>
                     </div>
                   </div>
-                  <div className={`text-xs font-semibold mb-4 ${isOverdue ? 'text-crimson-600' : daysLeft <= 3 ? 'text-amber-600' : 'text-forest-600'}`}>
-                    {isOverdue ? '⚠ Overdue! Please return immediately' : `✓ ${daysLeft} day${daysLeft !== 1 ? 's' : ''} remaining`}
+                  <div className={`text-xs font-semibold mb-4 flex items-center gap-1 ${isOverdue ? 'text-crimson-600' : daysLeft <= 3 ? 'text-amber-600' : 'text-forest-600'}`}>
+                    {isOverdue ? (
+                      <><svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>Overdue! Please return immediately</>
+                      ) : (
+                        <><svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>{daysLeft} day{daysLeft !== 1 ? 's' : ''} remaining</>
+                      )
+                    }
                   </div>
                   <button onClick={() => setReturnId(issue.id)} className="btn-danger text-xs w-full py-2">
                     Return Book

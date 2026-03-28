@@ -18,8 +18,9 @@ export const Register = () => {
 
     setLoading(true);
     try {
+      console.log('[Register] Creating account with role:', form.role);
       await registerUser({ name: form.name, email: form.email, password: form.password, role: form.role });
-      toast.success('Account created! Please check your email for verification.');
+      toast.success(`Account created as ${form.role}! Please check your email for verification.`);
       navigate('/login');
     } catch (err) {
       const msg = err.code === 'auth/email-already-in-use' ? 'This email is already registered.'

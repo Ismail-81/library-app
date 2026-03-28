@@ -120,8 +120,8 @@ export const BookDetails = () => {
               {/* Issue Record */}
               {issueRecord && (
                 <div className={`p-4 rounded-xl mb-6 border ${isOverdue ? 'bg-crimson-50 border-crimson-200' : 'bg-amber-50 border-amber-200'}`}>
-                  <p className={`text-sm font-semibold mb-1 ${isOverdue ? 'text-crimson-800' : 'text-amber-800'}`}>
-                    {isOverdue ? '⚠ Overdue!' : '📚 Currently Borrowed'}
+                  <p className={`text-sm font-semibold mb-1 flex items-center gap-2 ${isOverdue ? 'text-crimson-800' : 'text-amber-800'}`}>
+                    {isOverdue ? (<><svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>Overdue!</>) : (<><svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>Currently Borrowed</>)}
                   </p>
                   <p className="text-xs text-ink-600">
                     Due: {dueDate ? format(dueDate, 'MMMM d, yyyy') : 'N/A'}

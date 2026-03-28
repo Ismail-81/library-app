@@ -1,6 +1,6 @@
 // src/pages/auth/Login.jsx
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { loginUser } from '../../firebase/auth';
 import { getUserProfile } from '../../firebase/auth';
 import { useAuth } from '../../context/AuthContext';
@@ -10,30 +10,50 @@ import Logo from '../../components/Logo';
 export const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const location = useLocation();
   const { user, profile } = useAuth();
 
-  // Redirect if already logged in
-  if (user && profile) {
-    navigate(profile.role === 'admin' ? '/admin' : '/student', { replace: true });
-    return null;
-  }
+  // Redirect if already logged in - use useEffect to avoid render-time navigation
+  useEffect(() => {
+    if (user && profile?.role) {
+      const destination = profile.role === 'admin' ? '/admin' : '/student';
+      // Only navigate if not already on the destination
+      if (location.pathname !== destination) {
+        navigate(destination, { replace: true });
+      }
+    }
+  }, [user, profile, navigate, location.pathname]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password) return toast.error('Please fill all fields');
     setLoading(true);
     try {
+      console.log('[Login] Attempting login with email:', form.email);
       const firebaseUser = await loginUser(form);
+      console.log('[Login] Firebase user authenticated:', firebaseUser.uid);
+      
       const userProfile = await getUserProfile(firebaseUser.uid);
-      console.log('User profile:', userProfile); // Debug log
-      console.log('User role:', userProfile?.role); // Debug log
-      toast.success(`Welcome back, ${userProfile?.name || 'User'}!`);
-      navigate(userProfile?.role === 'admin' ? '/admin' : '/student', { replace: true });
+      console.log('[Login] Retrieved profile:', userProfile);
+      console.log('[Login] User role:', userProfile?.role);
+      
+      if (!userProfile) {
+        console.error('[Login] ERROR: User profile not found in Firestore!');
+        toast.error('User profile not found. Please contact admin.');
+        setLoading(false);
+        return;
+      }
+      
+      const role = userProfile.role || 'student';
+      console.log('[Login] Final role assigned:', role);
+      
+      toast.success(`Welcome back, ${userProfile?.name || 'User'}! (${role})`);
+      // AuthContext will trigger redirect via useEffect
     } catch (err) {
       const msg = err.code === 'auth/invalid-credential' ? 'Invalid email or password.'
         : err.code === 'auth/too-many-requests' ? 'Too many attempts. Try again later.'
         : err.message;
+      console.error('[Login] Error:', err);
       toast.error(msg);
     } finally {
       setLoading(false);

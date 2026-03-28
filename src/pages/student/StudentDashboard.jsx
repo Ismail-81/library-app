@@ -1,6 +1,7 @@
 // src/pages/student/StudentDashboard.jsx
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Book, ListTodo, Clock, Bell } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { getMyIssuedBooks, getActiveIssues } from '../../services/issueService';
 import { getMyNotifications } from '../../services/notificationService';
@@ -61,17 +62,21 @@ export const StudentDashboard = () => {
       {/* Quick Actions */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         {[
-          { label: 'Browse Books', path: '/student/books', emoji: '📚' },
-          { label: 'My Books', path: '/student/issued', emoji: '📋' },
-          { label: 'History', path: '/student/history', emoji: '🕐' },
-          { label: 'Notifications', path: '/student/notifications', emoji: '🔔' },
-        ].map(a => (
+          { label: 'Browse Books', path: '/student/books', Icon: Book },
+          { label: 'My Books', path: '/student/issued', Icon: ListTodo },
+          { label: 'History', path: '/student/history', Icon: Clock },
+          { label: 'Notifications', path: '/student/notifications', Icon: Bell },
+        ].map(a => {
+          const IconComponent = a.Icon;
+          return (
           <Link key={a.path} to={a.path}
             className="card p-5 text-center hover:shadow-elevated transition-shadow duration-300 group">
-            <div className="text-2xl mb-2">{a.emoji}</div>
+            <div className="flex justify-center mb-2"><IconComponent className="w-6 h-6 text-ink-600 group-hover:text-ink-900" /></div>
             <p className="text-sm font-semibold text-ink-700 group-hover:text-ink-900">{a.label}</p>
           </Link>
-        ))}
+          );
+        })
+        }
       </div>
 
       {/* Active Borrows */}

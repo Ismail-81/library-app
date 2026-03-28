@@ -1,5 +1,6 @@
 // src/pages/public/Home.jsx
 import { Link } from 'react-router-dom';
+import { Book, Search, ListTodo, BarChart3, Bell, Upload } from 'lucide-react';
 import { Navbar } from '../../components/layout/Navbar';
 import { useAuth } from '../../context/AuthContext';
 
@@ -64,19 +65,23 @@ export const Home = () => {
       </div>
       <div className="grid md:grid-cols-3 gap-8">
         {[
-          { icon: '📚', title: 'Vast Collection', desc: 'Access thousands of books across fiction, science, history, technology, and more.' },
-          { icon: '🔍', title: 'Smart Search', desc: 'Find books instantly by title, author, or category with real-time search.' },
-          { icon: '📋', title: 'Easy Borrowing', desc: 'Issue and return books in seconds. Track due dates and get notifications.' },
-          { icon: '📊', title: 'Rich Dashboard', desc: 'Students and admins get personalized dashboards with all the stats they need.' },
-          { icon: '🔔', title: 'Notifications', desc: 'Stay informed about due dates, new arrivals, and borrowing status.' },
-          { icon: '📤', title: 'Export Reports', desc: 'Admins can export book lists, user data and issued books to Excel or CSV.' },
-        ].map(f => (
+          { Icon: Book, title: 'Vast Collection', desc: 'Access thousands of books across fiction, science, history, technology, and more.' },
+          { Icon: Search, title: 'Smart Search', desc: 'Find books instantly by title, author, or category with real-time search.' },
+          { Icon: ListTodo, title: 'Easy Borrowing', desc: 'Issue and return books in seconds. Track due dates and get notifications.' },
+          { Icon: BarChart3, title: 'Rich Dashboard', desc: 'Students and admins get personalized dashboards with all the stats they need.' },
+          { Icon: Bell, title: 'Notifications', desc: 'Stay informed about due dates, new arrivals, and borrowing status.' },
+          { Icon: Upload, title: 'Export Reports', desc: 'Admins can export book lists, user data and issued books to Excel or CSV.' },
+        ].map(f => {
+          const IconComponent = f.Icon;
+          return (
           <div key={f.title} className="card p-6 hover:shadow-elevated transition-shadow duration-300">
-            <div className="text-3xl mb-4">{f.icon}</div>
+            <div className="mb-4"><IconComponent className="w-8 h-8 text-amber-600" /></div>
             <h3 className="font-display text-lg font-semibold text-ink-900 mb-2">{f.title}</h3>
             <p className="text-sm text-ink-500 leading-relaxed">{f.desc}</p>
           </div>
-        ))}
+          );
+        })
+        }
       </div>
     </section>
 

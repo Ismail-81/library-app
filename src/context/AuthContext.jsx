@@ -13,10 +13,29 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = subscribeToAuthChanges(async (firebaseUser) => {
       if (firebaseUser) {
         setUser(firebaseUser);
-        const prof = await getUserProfile(firebaseUser.uid);
-        console.log('AuthContext profile:', prof); // Debug log
-        console.log('AuthContext role:', prof?.role); // Debug log
-        setProfile(prof);
+        try {
+          const prof = await getUserProfile(firebaseUser.uid);
+          console.log('[AuthContext] Fetched profile:', prof);
+          console.log('[AuthContext] User role:', prof?.role);
+          
+          if (prof && prof.role) {
+            // Profile exists with a valid role
+            console.log('[AuthContext] Setting profile with role:', prof.role);
+            setProfile(prof);
+          } else if (prof) {
+            // Profile exists but no role - assign default
+            console.warn('[AuthContext] Profile exists but missing role, defaulting to student');
+            setProfile({ ...prof, role: 'student' });
+          } else {
+            // Document doesn't exist - create minimal profile with student role
+            console.warn('[AuthContext] No profile document found, creating default student profile');
+            setProfile({ uid: firebaseUser.uid, email: firebaseUser.email, role: 'student' });
+          }
+        } catch (error) {
+          console.error('[AuthContext] Error fetching profile:', error);
+          // Fallback to minimal profile
+          setProfile({ uid: firebaseUser.uid, email: firebaseUser.email, role: 'student' });
+        }
       } else {
         setUser(null);
         setProfile(null);
