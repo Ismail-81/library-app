@@ -133,14 +133,6 @@ export const Login = () => {
             <Link to="/register" className="text-amber-600 hover:text-amber-700 font-medium">Create one</Link>
           </p>
 
-          {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <p className="text-xs font-semibold text-amber-800 mb-2">Demo Credentials</p>
-            <div className="space-y-1 text-xs text-amber-700 font-mono">
-              <p>Admin: admin@library.com / admin123</p>
-              <p>Student: student@library.com / student123</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
