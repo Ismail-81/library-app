@@ -61,7 +61,6 @@ export const Register = () => {
               <label className="block text-sm font-medium text-ink-700 mb-1.5">Role</label>
               <select value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} className="input-field">
                 <option value="student">Student</option>
-                <option value="admin">Admin</option>
               </select>
             </div>
             <div>
