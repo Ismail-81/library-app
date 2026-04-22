@@ -1,6 +1,6 @@
 // src/pages/auth/Login.jsx
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { loginUser } from '../../firebase/auth';
 import { getUserProfile } from '../../firebase/auth';
 import { useAuth } from '../../context/AuthContext';
@@ -11,6 +11,7 @@ export const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, profile } = useAuth();
 
   // Redirect if already logged in - use useEffect to avoid render-time navigation
